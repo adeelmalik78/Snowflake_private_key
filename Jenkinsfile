@@ -12,7 +12,6 @@ pipeline {
 
     stage('sshUserPrivateKey') {
         steps {
-            bat "dir"
             script {
               withCredentials([
                 sshUserPrivateKey(
@@ -24,14 +23,15 @@ pipeline {
                     bat '''
                         set LIQUIBASE_COMMAND_URL="${BASE_URL}&user=${USERNAME}&private_key_file=${KEYFILE}&private_key_pwd=${PASSPHRASE}"
                         echo LIQUIBASE_COMMAND_URL=${LIQUIBASE_COMMAND_URL}
+
                     '''
-                    // print 'keyFile=' + KEYFILE
-                    // print 'passphrase=' + PASSPHRASE
-                    // print 'username=' + USERNAME
-                    // print 'keyFile.collect { it }=' + keyFile.collect { it }
-                    // print 'passphrase.collect { it }=' + passphrase.collect { it }
-                    // print 'username.collect { it }=' + username.collect { it }
-                    // print 'keyFileContent=' + readFile(keyFile)
+                    print 'keyFile=' + KEYFILE
+                    print 'passphrase=' + PASSPHRASE
+                    print 'username=' + USERNAME
+                    print 'keyFile.collect { it }=' + keyFile.collect { it }
+                    print 'passphrase.collect { it }=' + passphrase.collect { it }
+                    print 'username.collect { it }=' + username.collect { it }
+                    print 'keyFileContent=' + readFile(keyFile)
                 }
             }
       }
