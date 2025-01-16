@@ -25,6 +25,8 @@ pipeline {
                         echo LIQUIBASE_COMMAND_URL=${LIQUIBASE_COMMAND_URL}
 
                     '''
+                    echo 'keyFile=${KEYFILE}'
+                    
                     print 'keyFile=' + KEYFILE
                     print 'passphrase=' + PASSPHRASE
                     print 'username=' + USERNAME
