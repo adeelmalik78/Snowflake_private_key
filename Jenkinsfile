@@ -22,7 +22,7 @@ pipeline {
                       usernameVariable: 'USERNAME')
                 ]) {
                     bat '''
-                        export LIQUIBASE_COMMAND_URL="${BASE_URL}&user=${USERNAME}&private_key_file=${KEYFILE}&private_key_pwd=${PASSPHRASE}"
+                        set LIQUIBASE_COMMAND_URL="${BASE_URL}&user=${USERNAME}&private_key_file=${KEYFILE}&private_key_pwd=${PASSPHRASE}"
                         echo LIQUIBASE_COMMAND_URL=${LIQUIBASE_COMMAND_URL}
                     '''
                     // print 'keyFile=' + KEYFILE
