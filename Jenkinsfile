@@ -26,7 +26,7 @@ pipeline {
 
                     '''
                     echo 'keyFile=${KEYFILE}'
-                    
+
                     print 'keyFile=' + KEYFILE
                     print 'passphrase=' + PASSPHRASE
                     print 'username=' + USERNAME
@@ -34,6 +34,10 @@ pipeline {
                     print 'passphrase.collect { it }=' + passphrase.collect { it }
                     print 'username.collect { it }=' + username.collect { it }
                     print 'keyFileContent=' + readFile(keyFile)
+
+                    bat '''
+                    C:\Users\Administrator\liquibase-4.29.0\liquibase.bat connect
+                    '''
                 }
             }
       }
