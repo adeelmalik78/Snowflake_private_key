@@ -15,11 +15,11 @@ pipeline {
         steps {
             withCredentials([
             sshUserPrivateKey(
-                    credentialsId: 'test_privatekey',     // this is the name of 
-                    keyFileVariable: 'KEYFILE',
-                    passphraseVariable: 'PASSPHRASE',
-                    usernameVariable: 'USERNAME')
-                ]) {
+                credentialsId: 'test_privatekey',     // this is the name of 
+                keyFileVariable: 'KEYFILE',
+                passphraseVariable: 'PASSPHRASE',
+                usernameVariable: 'USERNAME')
+            ]) {
                 print 'keyFile=' + KEYFILE
                 print 'passphrase=' + PASSPHRASE
                 print 'username=' + USERNAME
@@ -30,12 +30,12 @@ pipeline {
 
                 bat '''
                     echo KEYFILE=$KEYFILE
-                    set LIQUIBASE_COMMAND_URL=${BASE_URL}&user=${USERNAME}&private_key_file=${KEYFILE}&private_key_pwd=${PASSPHRASE}
-                    echo LIQUIBASE_COMMAND_URL=${LIQUIBASE_COMMAND_URL}
+                    set LIQUIBASE_COMMAND_URL=%BASE_URL%&user=%USERNAME%&private_key_file=%KEYFILE%&private_key_pwd=%PASSPHRASE%
+                    echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
                     C:\\Users\\Administrator\\liquibase-4.29.0\\liquibase.bat connect
                 '''
             }
-      }
+        }
     }
 
     // stage('secretsFile') {
