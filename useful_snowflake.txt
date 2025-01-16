@@ -1,0 +1,24 @@
+# Commands to create a private key
+openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out adeelmalik.p8 -nocrypt
+
+openssl genrsa 2048 | openssl pkcs8 -topk8 -v2 des3 -inform PEM -out adeelmalik.p8
+openssl genrsa 3072 | openssl pkcs8 -topk8 -v2 aes256 -inform PEM -out adeelmalik.p8
+
+openssl rsa -in adeelmalik.p8 -pubout -out adeelmalik.pub
+
+
+# Setup user in Snowflake with public key:
+USER ROLE LIQUIBASE_USER;
+
+CREATE USER adeelmalik;
+SHOW USERS;
+
+ALTER USER adeelmalik SET RSA_PUBLIC_KEY_2='JERUEHtcve...';
+
+GRANT ROLE SYSADMIN TO USER adeelmalik;
+GRANT ROLE LIQUIBASE_USER TO USER adeelmalik;
+
+
+# Run this command to fix error: "PBES2 SecretKeyFactory not available"
+JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true" liquibase status
+
