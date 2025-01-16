@@ -22,12 +22,6 @@ pipeline {
                       usernameVariable: 'USERNAME')
                 ]) {
                     bat '''
-                        set LIQUIBASE_COMMAND_URL="${BASE_URL}&user=${USERNAME}&private_key_file=${KEYFILE}&private_key_pwd=${PASSPHRASE}"
-                        echo LIQUIBASE_COMMAND_URL=${LIQUIBASE_COMMAND_URL}
-
-                    '''
-                    echo 'keyFile=${KEYFILE}'
-
                     print 'keyFile=' + KEYFILE
                     print 'passphrase=' + PASSPHRASE
                     print 'username=' + USERNAME
@@ -37,7 +31,9 @@ pipeline {
                     print 'keyFileContent=' + readFile(keyFile)
 
                     bat '''
-                    C:\\Users\\Administrator\\liquibase-4.29.0\\liquibase.bat connect
+                        set LIQUIBASE_COMMAND_URL="${BASE_URL}&user=${USERNAME}&private_key_file=${KEYFILE}&private_key_pwd=${PASSPHRASE}"
+                        echo LIQUIBASE_COMMAND_URL=${LIQUIBASE_COMMAND_URL}
+                        C:\\Users\\Administrator\\liquibase-4.29.0\\liquibase.bat connect
                     '''
                 }
             }
