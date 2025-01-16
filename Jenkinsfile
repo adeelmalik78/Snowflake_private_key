@@ -36,7 +36,7 @@ pipeline {
                     print 'keyFileContent=' + readFile(keyFile)
 
                     bat '''
-                    C:\Users\Administrator\liquibase-4.29.0\liquibase.bat connect
+                    C:\\Users\\Administrator\\liquibase-4.29.0\\liquibase.bat connect
                     '''
                 }
             }
