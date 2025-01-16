@@ -13,6 +13,7 @@ pipeline {
     stage('sshUserPrivateKey') {
         steps {
             script {
+                sh ' echo Current working directory is: %CD%'
               withCredentials([
                 sshUserPrivateKey(
                       credentialsId: 'test_privatekey',     // this is the name of 
