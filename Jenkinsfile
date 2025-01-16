@@ -5,7 +5,7 @@ pipeline {
   
   environment {
         LIQUIBASE_LICENSE_KEY=credentials('LIQUIBASE_LICENSE_KEY')
-		BASE_URL="jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH&role=LIQUIBASE_USER"
+		BASE_URL=jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH&role=LIQUIBASE_USER
   }
   
   stages {
