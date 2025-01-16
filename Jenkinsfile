@@ -12,6 +12,7 @@ pipeline {
 
     stage('sshUserPrivateKey') {
         steps {
+            bat "dir"
             script {
               withCredentials([
                 sshUserPrivateKey(
