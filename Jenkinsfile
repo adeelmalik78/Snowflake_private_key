@@ -34,7 +34,7 @@ pipeline {
 
                     bat '''
                         echo KEYFILE=%KEYFILE%
-                        echo NEWKEYFILE=%NEWKEYFILEPATH%
+                        echo NEWKEYFILE= ''' + NEWKEYFILEPATH + '''
                         set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=%NEWKEYFILEPATH%&private_key_pwd=%PASSPHRASE%"
                         set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
