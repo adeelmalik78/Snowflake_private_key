@@ -33,7 +33,7 @@ pipeline {
                     print 'username.collect { it }=' + username.collect { it }
                     print 'keyFileContent=' + readFile(keyFile)
 
-                    bat '''
+                    sh '''
                         echo CURRENT WORKING DIRECTORY=%CD%
                         echo KEYFILE=%KEYFILE%
                         copy %KEYFILE% keyfile.p8
