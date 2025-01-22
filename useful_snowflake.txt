@@ -28,5 +28,5 @@ export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
 liquibase connect
 
 Windows:
-export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true" 
+set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true" 
 liquibase connect
