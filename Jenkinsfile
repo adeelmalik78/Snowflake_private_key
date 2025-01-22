@@ -12,7 +12,7 @@ pipeline {
 
     stage('sshUserPrivateKey') {
         steps {
-            cleanWs()
+            cleanWs disableDeferredWipeout: true
             git branch: 'main', url: 'https://github.com/adeelmalik78/Snowflake_private_key.git'
             script {
                 withCredentials([
@@ -38,8 +38,6 @@ pipeline {
                         echo KEYFILE=%KEYFILE%
                         copy %KEYFILE% keyfile.p8
                         dir
-
-                        REM set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file="''' + NEWKEYFILEPATH + '''"&private_key_pwd=%PASSPHRASE%"
 
                         set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=keyfile.p8&private_key_pwd=%PASSPHRASE%"
                         set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
