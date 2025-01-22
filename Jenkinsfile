@@ -5,7 +5,7 @@ pipeline {
   
   environment {
         LIQUIBASE_LICENSE_KEY=credentials('LIQUIBASE_LICENSE_KEY')
-		BASE_URL="jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH&role=LIQUIBASE_USER"
+		BASE_URL=jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH\&role=LIQUIBASE_USER
   }
   
   stages {
@@ -41,7 +41,7 @@ pipeline {
 
                         REM set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file="''' + NEWKEYFILEPATH + '''"&private_key_pwd=%PASSPHRASE%"
 
-                        set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=keyfile.p8&private_key_pwd=%PASSPHRASE%"
+                        set LIQUIBASE_COMMAND_URL=%BASE_URL%\&user=adeelmalik\&private_key_file=keyfile.p8\&private_key_pwd=%PASSPHRASE%
                         set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
 
                         echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
