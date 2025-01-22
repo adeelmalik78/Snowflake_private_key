@@ -35,10 +35,10 @@ pipeline {
 
                     bat '''
                         echo CURRENT WORKING DIRECTORY=%CD%
-                        dir
-                        cd Snowflake_private_key
                         echo KEYFILE=%KEYFILE%
                         copy %KEYFILE% keyfile.p8
+                        dir
+
                         REM set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file="''' + NEWKEYFILEPATH + '''"&private_key_pwd=%PASSPHRASE%"
                         set LIQUIBASE_COMMAND_URL=%BASE_URL%&user=adeelmalik&private_key_file=keyfile.p8&private_key_pwd=%PASSPHRASE%"
                         set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
