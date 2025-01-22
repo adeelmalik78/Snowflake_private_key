@@ -19,8 +19,10 @@ pipeline {
                 passphraseVariable: 'PASSPHRASE',
                 usernameVariable: 'USERNAME')
             ]) {
-                newKeyFilePath = keyFile.replace("\\\\", "/")
+                String NEWKEYFILEPATH = KEYFILE.replace("\\\\", "/")
+                
                 print 'keyFile=' + KEYFILE
+                print 'newKeyFile=' + NEWKEYFILEPATH
                 print 'passphrase=' + PASSPHRASE
                 print 'username=' + USERNAME
                 print 'keyFile.collect { it }=' + keyFile.collect { it }
