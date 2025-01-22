@@ -24,11 +24,9 @@ pipeline {
                     KEYFILE.replace("\\", "/")
 
                     print 'keyFile=' + KEYFILE
-                    print 'newKeyFile=' + NEWKEYFILEPATH
                     print 'passphrase=' + PASSPHRASE
                     print 'username=' + USERNAME
                     print 'keyFile.collect { it }=' + keyFile.collect { it }
-                    print 'newKeyFile.collect { it }=' + newKeyFile.collect { it }
                     print 'passphrase.collect { it }=' + passphrase.collect { it }
                     print 'username.collect { it }=' + username.collect { it }
                     print 'keyFileContent=' + readFile(keyFile)
