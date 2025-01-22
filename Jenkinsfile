@@ -36,7 +36,7 @@ pipeline {
                     bat '''
                         echo CURRENT WORKING DIRECTORY=%CD%
                         echo KEYFILE=%KEYFILE%
-                        copy %KEYFILE% keyfile.p8
+                        copy %KEYFILE% adeelmalik.p8
                         dir
 
                         set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
