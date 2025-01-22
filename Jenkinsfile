@@ -23,7 +23,7 @@ pipeline {
                     NEWKEYFILEPATH=KEYFILE.replace("\\", "/")
 
                     print 'keyFile=' + KEYFILE
-                    print 'newKeyFilePath' + NEWKEYFILEPATH
+                    print 'newKeyFilePath=' + NEWKEYFILEPATH
                     print 'passphrase=' + PASSPHRASE
                     print 'username=' + USERNAME
                     print 'keyFile.collect { it }=' + keyFile.collect { it }
@@ -33,7 +33,7 @@ pipeline {
 
                     bat '''
                         echo KEYFILE=%KEYFILE%
-                        set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=%KEYFILE%&private_key_pwd=%PASSPHRASE%"
+                        set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=%NEWKEYFILEPATH%&private_key_pwd=%PASSPHRASE%"
                         set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
                         C:\\Users\\Administrator\\liquibase-4.29.0\\liquibase.bat connect
