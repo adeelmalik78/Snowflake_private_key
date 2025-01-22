@@ -20,5 +20,13 @@ GRANT ROLE LIQUIBASE_USER TO USER adeelmalik;
 
 
 # Run this command to fix error: "PBES2 SecretKeyFactory not available"
-JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true" liquibase status
+export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true" 
+liquibase connect
 
+Mac/Linux:
+export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true" 
+liquibase connect
+
+Windows:
+export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true" 
+liquibase connect
