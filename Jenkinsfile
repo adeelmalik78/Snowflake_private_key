@@ -44,7 +44,7 @@ pipeline {
 
                         echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
 
-                        C:\\Users\\Administrator\\liquibase-4.29.0\\liquibase.bat connect
+                        C:\\Users\\Administrator\\liquibase-4.31.0\\liquibase.bat connect
                     '''
                 }
             }
