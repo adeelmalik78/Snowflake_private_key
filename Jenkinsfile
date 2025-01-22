@@ -20,10 +20,10 @@ pipeline {
                     passphraseVariable: 'PASSPHRASE',
                     usernameVariable: 'USERNAME')
                 ]) {
-
-                    KEYFILE.replace("\\", "/")
+                    NEWKEYFILEPATH=KEYFILE.replace("\\", "/")
 
                     print 'keyFile=' + KEYFILE
+                    print 'newKeyFilePath' + NEWKEYFILEPATH
                     print 'passphrase=' + PASSPHRASE
                     print 'username=' + USERNAME
                     print 'keyFile.collect { it }=' + keyFile.collect { it }
