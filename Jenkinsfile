@@ -12,32 +12,35 @@ pipeline {
 
     stage('sshUserPrivateKey') {
         steps {
-            withCredentials([
-            sshUserPrivateKey(
-                credentialsId: 'test_privatekey',     // this is the name of 
-                keyFileVariable: 'KEYFILE',
-                passphraseVariable: 'PASSPHRASE',
-                usernameVariable: 'USERNAME')
-            ]) {
-                KEYFILE.replace("\\", "/")
-                
-                print 'keyFile=' + KEYFILE
-                print 'newKeyFile=' + NEWKEYFILEPATH
-                print 'passphrase=' + PASSPHRASE
-                print 'username=' + USERNAME
-                print 'keyFile.collect { it }=' + keyFile.collect { it }
-                print 'newKeyFile.collect { it }=' + newKeyFile.collect { it }
-                print 'passphrase.collect { it }=' + passphrase.collect { it }
-                print 'username.collect { it }=' + username.collect { it }
-                print 'keyFileContent=' + readFile(keyFile)
+            script {
+                withCredentials([
+                sshUserPrivateKey(
+                    credentialsId: 'test_privatekey',     // this is the name of 
+                    keyFileVariable: 'KEYFILE',
+                    passphraseVariable: 'PASSPHRASE',
+                    usernameVariable: 'USERNAME')
+                ]) {
 
-                bat '''
-                    echo KEYFILE=%KEYFILE%
-                    set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=%KEYFILE%&private_key_pwd=%PASSPHRASE%"
-                    set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
-                    echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
-                    C:\\Users\\Administrator\\liquibase-4.29.0\\liquibase.bat connect
-                '''
+                    KEYFILE.replace("\\", "/")
+
+                    print 'keyFile=' + KEYFILE
+                    print 'newKeyFile=' + NEWKEYFILEPATH
+                    print 'passphrase=' + PASSPHRASE
+                    print 'username=' + USERNAME
+                    print 'keyFile.collect { it }=' + keyFile.collect { it }
+                    print 'newKeyFile.collect { it }=' + newKeyFile.collect { it }
+                    print 'passphrase.collect { it }=' + passphrase.collect { it }
+                    print 'username.collect { it }=' + username.collect { it }
+                    print 'keyFileContent=' + readFile(keyFile)
+
+                    bat '''
+                        echo KEYFILE=%KEYFILE%
+                        set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=%KEYFILE%&private_key_pwd=%PASSPHRASE%"
+                        set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
+                        echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
+                        C:\\Users\\Administrator\\liquibase-4.29.0\\liquibase.bat connect
+                    '''
+                }
             }
         }
     }
