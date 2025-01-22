@@ -44,7 +44,7 @@ pipeline {
 
                         echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
 
-                        C:\\Users\\Administrator\\liquibase-4.31.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
+                        C:\\Users\\Administrator\\liquibase-4.31.0\\liquibase.bat connect
                     '''
                 }
             }
