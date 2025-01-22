@@ -13,6 +13,7 @@ pipeline {
     stage('sshUserPrivateKey') {
         steps {
             cleanWs()
+            git branch: 'main', url: 'https://github.com/adeelmalik78/Snowflake_private_key.git'
             script {
                 withCredentials([
                 sshUserPrivateKey(
@@ -33,10 +34,13 @@ pipeline {
                     print 'keyFileContent=' + readFile(keyFile)
 
                     bat '''
+                        echo CURRENT WORKING DIRECTORY=%CD%
+                        dir
+                        cd Snowflake_private_key
                         echo KEYFILE=%KEYFILE%
                         copy %KEYFILE% keyfile.p8
                         REM set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file="''' + NEWKEYFILEPATH + '''"&private_key_pwd=%PASSPHRASE%"
-                        set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=keyfile.p8&private_key_pwd=%PASSPHRASE%"
+                        set LIQUIBASE_COMMAND_URL=%BASE_URL%&user=adeelmalik&private_key_file=keyfile.p8&private_key_pwd=%PASSPHRASE%"
                         set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
                         C:\\Users\\Administrator\\liquibase-4.29.0\\liquibase.bat connect
