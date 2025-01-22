@@ -12,6 +12,7 @@ pipeline {
 
     stage('sshUserPrivateKey') {
         steps {
+            cleanWs()
             script {
                 withCredentials([
                 sshUserPrivateKey(
