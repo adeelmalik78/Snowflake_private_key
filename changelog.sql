@@ -1,6 +1,6 @@
 -- liquibase formatted sql
 
--- Changeset amalik:tag-version01
+-- Changeset amalik:tag-version01 labels:tag
 --tagDatabase: 'release01'
 
 -- Changeset amalik:createTable-MYTABLE5 context:DEV labels:Feature1
@@ -31,7 +31,7 @@ INSERT INTO MYTABLE5 (address, C1, C2, age, "name") VALUES ('6080 Tower Bridge C
 CREATE VIEW MYVIEW_MYTABLE5 AS SELECT * FROM MYTABLE5;
 --rollback DROP VIEW MYVIEW_MYTABLE5;
 
--- Changeset amalik:tag-version02
+-- Changeset amalik:tag-version02 labels:tag
 --tagDatabase: 'release02'
 
 -- Changeset amalik:Alter_view-example context:DEV,PROD labels:Feature1
