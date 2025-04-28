@@ -7,6 +7,6 @@ foreach ($item in $array) {
   # Write-Host "LABEL: $item"
   $env:LIQUIBASE_COMMAND_LABELS = $item
   Write-Host "LIQUIBASE_COMMAND_LABELS: @$env:LIQUIBASE_COMMAND_LABELS"
-  liquibase status
-  # liquibase flow
+  # liquibase status
+  liquibase flow
 }
