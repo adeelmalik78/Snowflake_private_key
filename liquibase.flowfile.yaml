@@ -12,11 +12,11 @@ stages:
 
     - type: liquibase
       command: update
-      globalArgs: {
-        log-file: "liquibaseLog.json",
-        log-format: "JSON_PRETTY",
-        log-level: "INFO"
-      }
+      # globalArgs: {
+      #   log-file: "liquibaseLog.json",
+      #   log-format: "JSON_PRETTY",
+      #   log-level: "INFO"
+      # }
 
 endStage:
   actions:

@@ -39,8 +39,8 @@ DROP VIEW MYVIEW_MYTABLE5;
 --rollback CREATE VIEW MYVIEW_MYTABLE5 AS SELECT * FROM MYTABLE5;
 
 -- Changeset amalik:renameTable-example context:DEV labels:Feature3
-ALTER TABLE IF EXISTS MYTABLE5 RENAME TO CUSTOMER;
---rollback ALTER TABLE IF EXISTS CUSTOMER RENAME TO MYTABLE5;
+ALTER TABLE IF EXISTS MYTABLE6 RENAME TO CONTRACTORS;
+--rollback ALTER TABLE IF EXISTS CONTRACTORS RENAME TO MYTABLE6;
 
 -- Changeset amalik:4432535-read_result_set context:DEV labels:Feature1 endDelimiter:/ runOneChange:true
 create or replace procedure read_result_set()
@@ -66,7 +66,3 @@ create or replace procedure read_result_set()
 -- Changeset amalik:createView-example2 context:DEV labels:Feature1
 CREATE VIEW MYVIEW_CUSTOMER AS SELECT * FROM CUSTOMER;
 --rollback DROP VIEW MYVIEW_CUSTOMER;
-
--- Changeset amalik:addPrimaryKey-example context:DEV labels:Feature1
-ALTER TABLE CUSTOMER ADD CONSTRAINT pk_person PRIMARY KEY (C1, C2);
---rollback ALTER TABLE CUSTOMER DROP PRIMARY KEY;
