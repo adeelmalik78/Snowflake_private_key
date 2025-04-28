@@ -1,42 +1,48 @@
 -- liquibase formatted sql
 
--- Changeset SteveZ:createTable-MYTABLE5 context:DEV labels:Feature1
+-- Changeset amalik:tag-version01
+--tagDatabase: 'release01'
+
+-- Changeset amalik:createTable-MYTABLE5 context:DEV labels:Feature1
 CREATE TABLE MYTABLE5 (C1 STRING, C2 STRING);
 --rollback DROP TABLE MYTABLE5;
 
--- Changeset SteveZ:createTable-MYTABLE6 context:PROD labels:Feature2
+-- Changeset amalik:createTable-MYTABLE6 context:PROD labels:Feature2
 CREATE TABLE MYTABLE6 (C1 STRING, C2 STRING);
 --rollback DROP TABLE MYTABLE6;
 
--- Changeset liquibase-docs:addColumn-example1 context:DEV labels:Feature3
+-- Changeset amalik:addColumn-example1 context:DEV labels:Feature3
 ALTER TABLE MYTABLE5 ADD address VARCHAR(255);
 --rollback ALTER TABLE MYTABLE5 DROP COLUMN address;
 
--- Changeset liquibase-docs:addColumn-example2 context:DEV labels:Feature1
+-- Changeset amalik:addColumn-example2 context:DEV labels:Feature1
 ALTER TABLE MYTABLE5 ADD "name" VARCHAR(50);
 --rollback ALTER TABLE MYTABLE5 DROP COLUMN "name";
 
--- Changeset liquibase-docs:addColumn-example3 context:DEV labels:Feature1
+-- Changeset amalik:addColumn-example3 context:DEV labels:Feature1
 ALTER TABLE MYTABLE5 ADD age STRING;
 --rollback ALTER TABLE MYTABLE5 DROP COLUMN age;
 
--- Changeset liquibase-docs:insert-example1 context:QA labels:Feature1
+-- Changeset amalik:insert-example1 context:QA labels:Feature1
 INSERT INTO MYTABLE5 (address, C1, C2, age, "name") VALUES ('6080 Tower Bridge Cir.', 'A1', 'A2', 'old', 'Bill');
 --rollback DELETE FROM "MYTABLE5" WHERE "C1"='6080 Tower Bridge Cir.';
 
--- Changeset liquibase-docs:createView-example1 context:DEV labels:Feature1
+-- Changeset amalik:createView-example1 context:DEV labels:Feature1
 CREATE VIEW MYVIEW_MYTABLE5 AS SELECT * FROM MYTABLE5;
 --rollback DROP VIEW MYVIEW_MYTABLE5;
 
--- Changeset liquibase-docs:Alter_view-example context:DEV,PROD labels:Feature1
+-- Changeset amalik:tag-version02
+--tagDatabase: 'release02'
+
+-- Changeset amalik:Alter_view-example context:DEV,PROD labels:Feature1
 DROP VIEW MYVIEW_MYTABLE5;
 --rollback CREATE VIEW MYVIEW_MYTABLE5 AS SELECT * FROM MYTABLE5;
 
--- Changeset liquibase-docs:renameTable-example context:DEV labels:Feature3
+-- Changeset amalik:renameTable-example context:DEV labels:Feature3
 ALTER TABLE IF EXISTS MYTABLE5 RENAME TO CUSTOMER;
 --rollback ALTER TABLE IF EXISTS CUSTOMER RENAME TO MYTABLE5;
 
--- Changeset SteveZ:4432535-read_result_set context:DEV labels:Feature1 endDelimiter:/ runOneChange:true
+-- Changeset amalik:4432535-read_result_set context:DEV labels:Feature1 endDelimiter:/ runOneChange:true
 create or replace procedure read_result_set()
   returns float not null
   language javascript
@@ -57,10 +63,10 @@ create or replace procedure read_result_set()
 /
 --rollback drop procedure read_result_set();
 
--- Changeset liquibase-docs:createView-example2 context:DEV labels:Feature1
+-- Changeset amalik:createView-example2 context:DEV labels:Feature1
 CREATE VIEW MYVIEW_CUSTOMER AS SELECT * FROM CUSTOMER;
 --rollback DROP VIEW MYVIEW_CUSTOMER;
 
--- Changeset liquibase-docs:addPrimaryKey-example context:DEV labels:Feature1
+-- Changeset amalik:addPrimaryKey-example context:DEV labels:Feature1
 ALTER TABLE CUSTOMER ADD CONSTRAINT pk_person PRIMARY KEY (C1, C2);
 --rollback ALTER TABLE CUSTOMER DROP PRIMARY KEY;

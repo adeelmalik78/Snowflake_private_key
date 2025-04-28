@@ -1,0 +1,24 @@
+stages:
+
+  Test:
+    actions:
+    - type: shell
+      command: echo "LABEL=${LIQUIBASE_COMMAND_LABEL}"
+
+  Update:
+    actions: 
+    - type: liquibase
+      command: status
+
+    - type: liquibase
+      command: update
+      globalArgs: {
+        log-file: "liquibaseLog.json",
+        log-format: "JSON_PRETTY",
+        log-level: "INFO"
+      }
+
+endStage:
+  actions:
+  - type: liquibase
+    command: history
