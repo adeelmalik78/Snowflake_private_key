@@ -30,3 +30,16 @@ liquibase connect
 Windows:
 set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true" 
 liquibase connect
+
+
+As for 4.32.0 release:
+(linux)
+export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
+export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=/Users/adeelmalik/adeelmalik.p8
+export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=1234
+
+(windows)
+As for 4.32.0 release:
+set LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
+set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=C:/Users/Administrator/adeelmalik.p8
+set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=1234
