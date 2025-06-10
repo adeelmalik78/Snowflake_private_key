@@ -20,17 +20,17 @@ pipeline {
                 sshUserPrivateKey(
                     credentialsId: 'test_privatekey',     // this is the name of 
                     keyFileVariable: 'KEYFILE',
-                    passphraseVariable: 'PASSPHRASE',
+                    passphraseVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE',
                     usernameVariable: 'LIQUIBASE_COMMAND_USERNAME')
                 ]) {
                     def NEWKEYFILEPATH=KEYFILE.replace("\\", "/")
 
                     print 'keyFile=' + KEYFILE
                     print 'newKeyFilePath=' + NEWKEYFILEPATH
-                    print 'passphrase=' + PASSPHRASE
+                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE
                     print 'username=' + LIQUIBASE_COMMAND_USERNAME
                     print 'KEYFILE.collect { it }=' + KEYFILE.collect { it }
-                    print 'PASSPHRASE.collect { it }=' + PASSPHRASE.collect { it }
+                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }
                     print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
                     print 'keyFileContent=' + readFile(keyFile)
 
@@ -45,7 +45,6 @@ pipeline {
 
 			set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
                         set LIQUIBASE_COMMAND_USERNAME=%USERNAME%
-			set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%PASSPHRASE%
 
                         echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH%
                         echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
