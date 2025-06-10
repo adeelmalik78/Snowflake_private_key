@@ -46,7 +46,7 @@ pipeline {
    
       			# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
 
-      			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat connect
+      			powershell.exe -Commmand "C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat connect"
    
                     '''
                 }
