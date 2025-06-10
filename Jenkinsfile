@@ -35,27 +35,12 @@ pipeline {
                     // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH_Content=' + readFile(LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH)
 
                     sh '''
-		    	echo CURRENT WORKING DIRECTORY=$PWD
+		    	# echo CURRENT WORKING DIRECTORY=$PWD
                         # echo KEYFILE=$KEYFILE
                         # cp $KEYFILE adeelmalik.p8
-			
-                        ls -alh $LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
 
-                        # set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
-			# set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
-			# set LIQUIBASE_COMMAND_USERNAME="%USERNAME%"
-   			# set LIQUIBASE_COMMAND_URL="%BASE_URL%"
-      			# C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
-			
-   
-			export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
-
-      			# export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
+			# export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
 		   	# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
-                        # echo LIQUIBASE_SNOWFLAKE_AUTH_TYPE=%LIQUIBASE_SNOWFLAKE_AUTH_TYPE%
-			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
-                        # echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
-			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
 
       			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat connect
    
