@@ -23,23 +23,23 @@ pipeline {
                     passphraseVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE',
                     usernameVariable: 'LIQUIBASE_COMMAND_USERNAME')
                 ]) {
-                    def newKeyFilePath=LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.replace("\\", "/")
+                    // def newKeyFilePath=LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.replace("\\", "/")
 
-                    print 'KEYFILE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
-                    print 'newKeyFilePath=' + newKeyFilePath
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE
-                    print 'LIQUIBASE_COMMAND_USERNAME=' + LIQUIBASE_COMMAND_USERNAME
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }
-                    print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH_Content=' + readFile(LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH)
+                    // print 'KEYFILE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
+                    // print 'newKeyFilePath=' + newKeyFilePath
+                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE
+                    // print 'LIQUIBASE_COMMAND_USERNAME=' + LIQUIBASE_COMMAND_USERNAME
+                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }
+                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }
+                    // print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
+                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH_Content=' + readFile(LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH)
 
                     sh '''
 		    	echo CURRENT WORKING DIRECTORY=$PWD
                         # echo KEYFILE=$KEYFILE
                         # cp $KEYFILE adeelmalik.p8
 			
-                        ls -alh
+                        ls -alh $LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
 
                         # set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
 			# set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
@@ -49,16 +49,14 @@ pipeline {
 			
    
 			export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
-   			# export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
-		   	# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
-                        
 
+      			# export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
+		   	# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         # echo LIQUIBASE_SNOWFLAKE_AUTH_TYPE=%LIQUIBASE_SNOWFLAKE_AUTH_TYPE%
 			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
                         # echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
 			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
 
-   			# C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat --version
       			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat connect
    
                     '''
