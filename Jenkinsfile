@@ -6,7 +6,7 @@ pipeline {
   environment {
         LIQUIBASE_LICENSE_KEY=credentials('LIQUIBASE_LICENSE_KEY')
 	// BASE_URL="jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH&role=LIQUIBASE_USER"
-  	LIQUIBASE_COMMAND_URL="jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH\\&role=LIQUIBASE_USER"
+  	LIQUIBASE_COMMAND_URL="jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH&role=LIQUIBASE_USER"
   }
   
   stages {
@@ -57,7 +57,8 @@ pipeline {
                         echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
 
                         REM C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
-			C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat connect
+			
+   			C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat connect
    
                     '''
                 }
