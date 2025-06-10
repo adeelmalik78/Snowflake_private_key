@@ -19,25 +19,25 @@ pipeline {
                 withCredentials([
                 sshUserPrivateKey(
                     credentialsId: 'test_privatekey',     // this is the name of 
-                    keyFileVariable: 'KEYFILE',
+                    keyFileVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH',
                     passphraseVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE',
                     usernameVariable: 'LIQUIBASE_COMMAND_USERNAME')
                 ]) {
-                    def newKeyFilePath=KEYFILE.replace("\\", "/")
+                    def newKeyFilePath=LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.replace("\\", "/")
 
-                    print 'KEYFILE=' + KEYFILE
+                    print 'KEYFILE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
                     print 'newKeyFilePath=' + newKeyFilePath
                     print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE
                     print 'LIQUIBASE_COMMAND_USERNAME=' + LIQUIBASE_COMMAND_USERNAME
-                    print 'KEYFILE.collect { it }=' + KEYFILE.collect { it }
+                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }
                     print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }
                     print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
-                    print 'KEYFILEContent=' + readFile(KEYFILE)
+                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH_Content=' + readFile(LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH)
 
                     sh '''
 		    	echo CURRENT WORKING DIRECTORY=$PWD
-                        echo KEYFILE=$KEYFILE
-                        cp $KEYFILE adeelmalik.p8
+                        # echo KEYFILE=$KEYFILE
+                        # cp $KEYFILE adeelmalik.p8
 			
                         ls -alh
 
@@ -49,7 +49,7 @@ pipeline {
 			
    
 			export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
-   			export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
+   			# export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
 		   	# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         
 
