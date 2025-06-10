@@ -39,8 +39,19 @@ pipeline {
                         copy %KEYFILE% adeelmalik.p8
                         dir
 
-                        set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
-                        set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
+                        // set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
+
+
+			set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=%NEWKEYFILEPATH%
+                        set LIQUIBASE_COMMAND_USER=%USERNAME%
+
+                        echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH%
+                        echo LIQUIBASE_COMMAND_USER=%LIQUIBASE_COMMAND_USER%
+			
+			set LIQUIBASE_COMMAND_URL="%BASE_URL%"
+
+   
+   			set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
 
                         echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
 
