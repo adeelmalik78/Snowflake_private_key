@@ -35,10 +35,11 @@ pipeline {
                     print 'keyFileContent=' + readFile(keyFile)
 
                     sh '''
-                        echo CURRENT WORKING DIRECTORY=%CD%
-                        echo KEYFILE=%KEYFILE%
-                        copy %KEYFILE% adeelmalik.p8
-                        dir
+		    	echo CURRENT WORKING DIRECTORY=$PWD
+                        # echo CURRENT WORKING DIRECTORY=%CD%
+                        # echo KEYFILE=%KEYFILE%
+                        # copy %KEYFILE% adeelmalik.p8
+                        # dir
 
                         REM set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
 			REM set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
@@ -47,16 +48,16 @@ pipeline {
       			REM C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
 			
    
-			set LIQUIBASE_SNOWFLAKE_AUTH_TYPE="PKI"
-		   	set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
+			# set LIQUIBASE_SNOWFLAKE_AUTH_TYPE="PKI"
+		   	# set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         
 
-                        echo LIQUIBASE_SNOWFLAKE_AUTH_TYPE=%LIQUIBASE_SNOWFLAKE_AUTH_TYPE%
-			echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
-                        echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
-			echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
+                        # echo LIQUIBASE_SNOWFLAKE_AUTH_TYPE=%LIQUIBASE_SNOWFLAKE_AUTH_TYPE%
+			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
+                        # echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
+			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
                         
-   			C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat connect
+   			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase connect
    
                     '''
                 }
