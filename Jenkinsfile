@@ -39,11 +39,11 @@ pipeline {
                         copy %KEYFILE% adeelmalik.p8
                         dir
 
-                        // set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
+                        # set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
 
 
 			set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
-                        set LIQUIBASE_COMMAND_USER=%USERNAME%
+                        set LIQUIBASE_COMMAND_USERNAME=%USERNAME%
 
                         echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH%
                         echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
@@ -55,7 +55,7 @@ pipeline {
 
                         echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
 
-                        // C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
+                        # C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
 			C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat connect
    
                     '''
