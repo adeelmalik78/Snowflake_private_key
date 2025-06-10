@@ -39,9 +39,9 @@ pipeline {
                         # echo KEYFILE=$KEYFILE
                         # cp $KEYFILE adeelmalik.p8
 
-			# export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
+			export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
 			echo "KeyPath length: " `echo -n ${LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH} | wc -m`
-		        echo "Usnermae: " ${LIQUIBASE_COMMAND_USERNAME}
+		        echo "Username: " ${LIQUIBASE_COMMAND_USERNAME}
 		        echo "PassPhrase length: " `echo -n ${LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE} | wc -m`
    
       			# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
