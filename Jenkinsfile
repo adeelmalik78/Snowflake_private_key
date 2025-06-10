@@ -42,7 +42,7 @@ pipeline {
                         // set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
 
 
-			set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=%NEWKEYFILEPATH%
+			set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
                         set LIQUIBASE_COMMAND_USER=%USERNAME%
 
                         echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH%
