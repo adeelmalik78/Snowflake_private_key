@@ -48,8 +48,8 @@ pipeline {
       			# C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
 			
    
-			# set LIQUIBASE_SNOWFLAKE_AUTH_TYPE="PKI"
-		   	# set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
+			export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
+		   	# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         
 
                         # echo LIQUIBASE_SNOWFLAKE_AUTH_TYPE=%LIQUIBASE_SNOWFLAKE_AUTH_TYPE%
@@ -57,7 +57,7 @@ pipeline {
                         # echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
 			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
 
-   			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat --version
+   			# C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat --version
       			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat connect
    
                     '''
