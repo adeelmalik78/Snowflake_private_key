@@ -38,7 +38,6 @@ pipeline {
 		    	echo CURRENT WORKING DIRECTORY=$PWD
                         echo KEYFILE=$KEYFILE
                         cp $KEYFILE adeelmalik.p8
-			cat adeelmalik.p8
 			
                         ls -alh
 
@@ -57,7 +56,8 @@ pipeline {
 			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
                         # echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
 			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
-                        
+
+			export PATH=C:\\Users\\Administrator\\liquibase-pro-4.32.0:$PATH
    			# C:/Users/Administrator/liquibase-pro-4.32.0/liquibase connect
       			liquibase --version
       			liquibase connect
