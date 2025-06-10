@@ -17,7 +17,7 @@ pipeline {
             script {
                 withCredentials([
                 sshUserPrivateKey(
-                    credentialsId: 'test_privatekey',     // this is the name of 
+                    // credentialsId: 'test_privatekey',     // this is the name of 
                     credentialsId: 'Snowflake_test',     // this is the name of 
                     keyFileVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH',
                     passphraseVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE',
