@@ -49,7 +49,7 @@ pipeline {
                         echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH%
                         echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
 			
-			set LIQUIBASE_COMMAND_URL="%BASE_URL%"
+			REM set LIQUIBASE_COMMAND_URL="%BASE_URL%"
 
    
    			set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
