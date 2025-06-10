@@ -19,20 +19,20 @@ pipeline {
                 withCredentials([
                 sshUserPrivateKey(
                     credentialsId: 'test_privatekey',     // this is the name of 
-                    keyFileVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH',
+                    keyFileVariable: 'KEYFILE',
                     passphraseVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE',
                     usernameVariable: 'LIQUIBASE_COMMAND_USERNAME')
                 ]) {
-                    // def newKeyFilePath=LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.replace("\\", "/")
+                    // def newKeyFilePath=KEYFILE.replace("\\", "/")
 
-                    // print 'KEYFILE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
+                    // print 'KEYFILE=' + KEYFILE
                     // print 'newKeyFilePath=' + newKeyFilePath
                     // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE
                     // print 'LIQUIBASE_COMMAND_USERNAME=' + LIQUIBASE_COMMAND_USERNAME
-                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }
+                    // print 'KEYFILE.collect { it }=' + KEYFILE.collect { it }
                     // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }
                     // print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
-                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH_Content=' + readFile(LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH)
+                    // print 'KEYFILE_Content=' + readFile(KEYFILE)
 
                     sh '''
 		    	# echo CURRENT WORKING DIRECTORY=$PWD
@@ -40,6 +40,7 @@ pipeline {
                         # cp $KEYFILE adeelmalik.p8
 
 			export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
+   			export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik_keypath_file.p8
 			echo "KeyPath length: " `echo -n ${LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH} | wc -m`
 		        echo "Username: " ${LIQUIBASE_COMMAND_USERNAME}
 		        echo "PassPhrase length: " `echo -n ${LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE} | wc -m`
