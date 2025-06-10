@@ -29,9 +29,9 @@ pipeline {
                     print 'newKeyFilePath=' + NEWKEYFILEPATH
                     print 'passphrase=' + PASSPHRASE
                     print 'username=' + LIQUIBASE_COMMAND_USERNAME
-                    print 'keyFile.collect { it }=' + keyFile.collect { it }
-                    print 'passphrase.collect { it }=' + passphrase.collect { it }
-                    print 'username.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
+                    print 'KEYFILE.collect { it }=' + KEYFILE.collect { it }
+                    print 'PASSPHRASE.collect { it }=' + PASSPHRASE.collect { it }
+                    print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
                     print 'keyFileContent=' + readFile(keyFile)
 
                     bat '''
