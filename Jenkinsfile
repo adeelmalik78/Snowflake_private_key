@@ -43,23 +43,19 @@ pipeline {
                         REM set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
 			REM set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
 			REM set LIQUIBASE_COMMAND_USERNAME=%USERNAME%
+   			REM set LIQUIBASE_COMMAND_URL="%BASE_URL%"
+      			REM C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
+			
    
-			set LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI			
+			set LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI	
+		   	set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         
 
                         echo LIQUIBASE_SNOWFLAKE_AUTH_TYPE=%LIQUIBASE_SNOWFLAKE_AUTH_TYPE%
-			echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH%
+			echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
                         echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
 			echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
-			echo LIQUIBASE_COMMAND_URL=%LIQUIBASE_COMMAND_URL%
-
-   
-			REM set LIQUIBASE_COMMAND_URL="%BASE_URL%"
-   
-   			set JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
-
-                        REM C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
-			
+                        
    			C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat connect
    
                     '''
