@@ -20,17 +20,17 @@ pipeline {
                     credentialsId: 'test_privatekey',     // this is the name of 
                     keyFileVariable: 'KEYFILE',
                     passphraseVariable: 'PASSPHRASE',
-                    usernameVariable: 'USERNAME')
+                    usernameVariable: 'LIQUIBASE_COMMAND_USERNAME')
                 ]) {
                     def NEWKEYFILEPATH=KEYFILE.replace("\\", "/")
 
                     print 'keyFile=' + KEYFILE
                     print 'newKeyFilePath=' + NEWKEYFILEPATH
                     print 'passphrase=' + PASSPHRASE
-                    print 'username=' + USERNAME
+                    print 'username=' + LIQUIBASE_COMMAND_USERNAME
                     print 'keyFile.collect { it }=' + keyFile.collect { it }
                     print 'passphrase.collect { it }=' + passphrase.collect { it }
-                    print 'username.collect { it }=' + username.collect { it }
+                    print 'username.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
                     print 'keyFileContent=' + readFile(keyFile)
 
                     bat '''
