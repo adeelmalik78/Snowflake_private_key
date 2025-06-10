@@ -1,7 +1,7 @@
 pipeline {
   agent {
       label 'windows'
-  }
+  }e
   
   environment {
         LIQUIBASE_LICENSE_KEY=credentials('LIQUIBASE_LICENSE_KEY')
@@ -23,16 +23,16 @@ pipeline {
                     passphraseVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE',
                     usernameVariable: 'LIQUIBASE_COMMAND_USERNAME')
                 ]) {
-                    def newKeyFilePath=LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.replace("\\", "/")
+                    // def newKeyFilePath=LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.replace("\\", "/")
 
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
-                    print 'newKeyFilePath=' + newKeyFilePath
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE
-                    print 'LIQUIBASE_COMMAND_USERNAME=' + LIQUIBASE_COMMAND_USERNAME
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }
-                    print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH_Content=' + readFile(LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH)
+                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
+                    // print 'newKeyFilePath=' + newKeyFilePath
+                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE
+                    // print 'LIQUIBASE_COMMAND_USERNAME=' + LIQUIBASE_COMMAND_USERNAME
+                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH.collect { it }
+                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }
+                    // print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
+                    // print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH_Content=' + readFile(LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH)
 
                     sh '''
 		    	# echo CURRENT WORKING DIRECTORY=$PWD
