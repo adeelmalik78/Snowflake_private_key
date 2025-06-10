@@ -25,27 +25,26 @@ pipeline {
                 ]) {
                     def LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=KEYFILE.replace("\\", "/")
 
-                    print 'keyFile=' + KEYFILE
+                    print 'KEYFILE=' + KEYFILE
                     print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
                     print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE
-                    print 'username=' + LIQUIBASE_COMMAND_USERNAME
+                    print 'LIQUIBASE_COMMAND_USERNAME=' + LIQUIBASE_COMMAND_USERNAME
                     print 'KEYFILE.collect { it }=' + KEYFILE.collect { it }
                     print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE.collect { it }
                     print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
-                    print 'keyFileContent=' + readFile(keyFile)
+                    print 'KEYFILEContent=' + readFile(KEYFILE)
 
                     sh '''
 		    	echo CURRENT WORKING DIRECTORY=$PWD
-                        # echo CURRENT WORKING DIRECTORY=%CD%
-                        # echo KEYFILE=%KEYFILE%
-                        # copy %KEYFILE% adeelmalik.p8
-                        # dir
+                        echo KEYFILE=%KEYFILE%
+                        copy $KEYFILE adeelmalik.p8
+                        dir
 
-                        REM set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
-			REM set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
-			REM set LIQUIBASE_COMMAND_USERNAME="%USERNAME%"
-   			REM set LIQUIBASE_COMMAND_URL="%BASE_URL%"
-      			REM C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
+                        # set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
+			# set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
+			# set LIQUIBASE_COMMAND_USERNAME="%USERNAME%"
+   			# set LIQUIBASE_COMMAND_URL="%BASE_URL%"
+      			# C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase.bat --url="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%" connect
 			
    
 			# set LIQUIBASE_SNOWFLAKE_AUTH_TYPE="PKI"
