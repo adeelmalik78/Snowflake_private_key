@@ -23,10 +23,10 @@ pipeline {
                     passphraseVariable: 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE',
                     usernameVariable: 'LIQUIBASE_COMMAND_USERNAME')
                 ]) {
-                    def LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=KEYFILE.replace("\\", "/")
+                    def newKeyFilePath=KEYFILE.replace("\\", "/")
 
                     print 'KEYFILE=' + KEYFILE
-                    print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH
+                    print 'newKeyFilePath=' + newKeyFilePath
                     print 'LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=' + LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE
                     print 'LIQUIBASE_COMMAND_USERNAME=' + LIQUIBASE_COMMAND_USERNAME
                     print 'KEYFILE.collect { it }=' + KEYFILE.collect { it }
@@ -49,6 +49,7 @@ pipeline {
 			
    
 			export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
+   			LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
 		   	# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         
 
