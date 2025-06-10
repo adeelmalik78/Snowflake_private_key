@@ -40,7 +40,11 @@ pipeline {
                         # cp $KEYFILE adeelmalik.p8
 
 			# export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
-		   	# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
+			echo "KeyPath length: " `echo -n ${LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH} | wc -m`
+		        echo "Usnermae: " ${LIQUIBASE_COMMAND_USERNAME}
+		        echo "PassPhrase length: " `echo -n ${LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE} | wc -m`
+   
+      			# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
 
       			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat connect
    
