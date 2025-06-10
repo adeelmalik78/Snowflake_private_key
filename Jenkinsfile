@@ -38,8 +38,9 @@ pipeline {
 		    	echo CURRENT WORKING DIRECTORY=$PWD
                         echo KEYFILE=$KEYFILE
                         cp $KEYFILE adeelmalik.p8
+			cat adeelmalik.p8
 			
-                        dir
+                        ls -alh
 
                         # set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
 			# set LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH="adeelmalik.p8"
@@ -57,7 +58,9 @@ pipeline {
                         # echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
 			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
                         
-   			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase connect
+   			# C:/Users/Administrator/liquibase-pro-4.32.0/liquibase connect
+      			liquibase --version
+      			liquibase connect
    
                     '''
                 }
