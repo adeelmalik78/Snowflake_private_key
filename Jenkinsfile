@@ -58,7 +58,7 @@ pipeline {
 			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
 
    			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat --version
-      			# C:/Users/Administrator/liquibase-pro-4.32.0/liquibase connect
+      			C:/Users/Administrator/liquibase-pro-4.32.0/liquibase.bat connect
    
                     '''
                 }
