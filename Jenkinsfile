@@ -57,8 +57,7 @@ pipeline {
                         # echo LIQUIBASE_COMMAND_USERNAME=%LIQUIBASE_COMMAND_USER%
 			# echo LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=%LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE%
 
-			export PATH=C:\\Users\\Administrator\\liquibase-pro-4.32.0:$PATH
-   			# C:/Users/Administrator/liquibase-pro-4.32.0/liquibase connect
+   			C:\\Users\\Administrator\\liquibase-pro-4.32.0\\liquibase connect
       			liquibase --version
       			liquibase connect
    
