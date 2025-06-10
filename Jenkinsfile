@@ -5,7 +5,6 @@ pipeline {
   
   environment {
         LIQUIBASE_LICENSE_KEY=credentials('LIQUIBASE_LICENSE_KEY')
-	// BASE_URL="jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH&role=LIQUIBASE_USER"
   	LIQUIBASE_COMMAND_URL="jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH&db=AMDB&schema=SCHEMA1"
   }
   
@@ -38,6 +37,7 @@ pipeline {
 		    	# echo CURRENT WORKING DIRECTORY=$PWD
                         # echo KEYFILE=$KEYFILE
                         # cp $KEYFILE adeelmalik.p8
+			cp $KEYFILE adeelmalik_keypath_file.p8
 
 			export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
    			export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik_keypath_file.p8
