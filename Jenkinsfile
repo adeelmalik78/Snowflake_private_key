@@ -1,7 +1,7 @@
 pipeline {
   agent {
       label 'windows'
-  }e
+  }
   
   environment {
         LIQUIBASE_LICENSE_KEY=credentials('LIQUIBASE_LICENSE_KEY')
