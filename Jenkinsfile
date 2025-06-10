@@ -37,7 +37,8 @@ pipeline {
                     sh '''
 		    	echo CURRENT WORKING DIRECTORY=$PWD
                         echo KEYFILE=$KEYFILE
-                        copy $KEYFILE adeelmalik.p8
+                        cp $KEYFILE adeelmalik.p8
+			
                         dir
 
                         # set LIQUIBASE_COMMAND_URL="%BASE_URL%&user=adeelmalik&private_key_file=adeelmalik.p8&private_key_pwd=%PASSPHRASE%"
