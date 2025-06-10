@@ -36,7 +36,7 @@ pipeline {
 
                     sh '''
 		    	echo CURRENT WORKING DIRECTORY=$PWD
-                        echo KEYFILE=%KEYFILE%
+                        echo KEYFILE=$KEYFILE
                         copy $KEYFILE adeelmalik.p8
                         dir
 
