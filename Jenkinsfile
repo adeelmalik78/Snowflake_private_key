@@ -34,7 +34,7 @@ pipeline {
                     print 'LIQUIBASE_COMMAND_USERNAME.collect { it }=' + LIQUIBASE_COMMAND_USERNAME.collect { it }
                     print 'keyFileContent=' + readFile(keyFile)
 
-                    bat '''
+                    sh '''
                         echo CURRENT WORKING DIRECTORY=%CD%
                         echo KEYFILE=%KEYFILE%
                         copy %KEYFILE% adeelmalik.p8
