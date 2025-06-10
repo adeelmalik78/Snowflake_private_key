@@ -49,7 +49,7 @@ pipeline {
 			
    
 			export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
-   			LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
+   			export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=adeelmalik.p8
 		   	# export JAVA_OPTS="-Dnet.snowflake.jdbc.enableBouncyCastle=true"
                         
 
