@@ -45,6 +45,8 @@ export LIQUIBASE_SNOWFLAKE_AUTH_TYPE=PKI
 export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PATH=/Users/adeelmalik/adeelmalik.p8
 export LIQUIBASE_SNOWFLAKE_AUTH_PRIVATE_KEY_PASSPHRASE=1234
 
+"jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?warehouse=CUSTOMERSUCCESS_WH&db=AMDB&schema=SCHEMA1&user=adeelmalik"
+
 (windows in powershell)
 As for 4.32.0 release:
 $env:LIQUIBASE_SNOWFLAKE_AUTH_TYPE="PKI"
